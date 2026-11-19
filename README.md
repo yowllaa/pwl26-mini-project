@@ -6,7 +6,7 @@
 - **NIM:** F1D02410039
 - **Mata Kuliah:** PWL
 - **Project:** Stockify API
-- **LINK YOUTUBE:** ....
+- **LINK YOUTUBE:** https://youtu.be/rR9wKVg-KLI?si=dMvZqAbQZ8khFDFA
 
 
 ## Deskripsi

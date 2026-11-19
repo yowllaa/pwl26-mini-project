@@ -1,0 +1,11 @@
+import express, { Request, Response, NextFunction } from "express";
+import categoryRoutes from "./routes/category.routes";
+import productRoutes from "./routes/product.routes";
+const app=express();
+app.use(express.json());
+app.get("/",(_req,res)=>res.json({success:true,message:"Welcome to Stockify API",endpoints:["/api/categories","/api/products"]}));
+app.use("/api/categories",categoryRoutes);
+app.use("/api/products",productRoutes);
+app.use((_req:Request,res:Response)=>res.status(404).json({success:false,message:"Route not found"}));
+app.use((err:any,_req:Request,res:Response,_next:NextFunction)=>{console.error(err);if(err?.code==="P2002")return res.status(400).json({success:false,message:"Duplicate value (name or SKU)"});if(err?.code==="P2003")return res.status(400).json({success:false,message:"Related data constraint error"});res.status(500).json({success:false,message:"Internal server error"});});
+export default app;
